@@ -1,3 +1,12 @@
+import bandsData from ('./bands.json')
+import musicianData from ('./musicians.json')
+import fs from ('fs');
+import PromptSync from "prompt-sync";
+const prompt = PromptSync({ sigint: true })
+import { Band, Musician } from "./classes.js";
+
+
+
 let info;
 let namn;
 let birthDay;
