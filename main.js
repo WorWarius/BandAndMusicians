@@ -14,7 +14,7 @@ let birthDay;
 let info;
 let currentBands = []
 let previousBands = []
-let instrument = []
+let instruments = []
 
 let bandName;
 let foundationDate;
@@ -45,12 +45,25 @@ function Menu() {
   switch (choice.trim()) {
     case "1":
       //Köra en funktion där användaren ska lägga till namn, efternamn, födelsedatum, information om skådisen, vilka band de är i, vilka de har varit i och vad för instrument de spelar
-      namn = prompt();
-      lastName = prompt();
-      birthDay = prompt();
-      info = prompt();
+      namn = prompt("Write your first name: ");
+      lastName = prompt("Write your last name: ");
+      birthDay = prompt("Write your birthday in this way: yyyymmdd: ");
+      info = prompt("Write some additional information you want to add: ");
+      const howManyInstruments = prompt("How many instruments does the musicians play? (note that singing is considered as a instrument here!): ")
+      for (let i = 0; i < parseInt(howManyInstruments); i++) {
+        const instrument = prompt("Write the instrument the artist can play")
+        instruments.push(instrument);
+      }
 
 
+      console.log(namn)
+      console.log(lastName)
+      console.log(birthDay)
+      console.log(info)
+      for (let i = 0; i < instruments.length; i++) {
+        console.log(instruments[i]);
+
+      }
 
 
     case "2":
