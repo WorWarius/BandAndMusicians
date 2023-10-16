@@ -3,21 +3,13 @@
 import fs from 'fs'
 import PromptSync from "prompt-sync";
 const prompt = PromptSync({ sigint: true })
-//import { Band, Musician } from "./classes.js";
+import { Band, Musician } from "./classes.js";
 
-const data = fs.readFileSync("./musicians.json")
-const savedMuscians = JSON.parse(data);
+//const data = fs.readFileSync("./musicians.json")
+//const savedMuscians = JSON.parse(data);
 
-let musiker = savedMuscians
+let run = true
 let bands = []
-
-let theName;
-let lastName;
-let birthYear;
-let info;
-let instruments = []
-let currentBands = []
-let previousBands = []
 
 let bandName;
 let foundationDate;
@@ -27,11 +19,13 @@ let bandInfo;
 let currentMembers = []
 let previousMembers = []
 
+/*
+while (run == true) {
+  Menu()
+}
+*/
 
 Menu();
-
-
-
 function Menu() {
   console.log("1. Lägg till musiker")
   console.log("2. Lägg till band")
@@ -48,13 +42,13 @@ function Menu() {
   switch (choice.trim()) {
     case "1":
       //Köra en funktion där användaren ska lägga till theName, efternamn, födelsedatum, information om skådisen, vilka band de är i, vilka de har varit i och vad för instrument de spelar
-      AddMuscician();
+      Musician.AddMuscician();
       break;
 
 
     case "2":
       //köra en funktion som skriver ut namnet på bandet, när det grundades, när (om) de löstes upp, info om bandet, vilka som är medlemmar och info om dem och vilka som har varit medlemmar
-      AddBand();
+      //AddBand();
       break;
 
 
@@ -79,15 +73,17 @@ function Menu() {
       break;
     case "9":
       //avsluta allt
+      run = false;
       break;
     default:
       //Gör så att användaren inte kan skriva alternativ som inte finns.
+      run = false;
       break;
 
   }
 
 }
-function AddMuscician() {
+/*function AddMuscician() {
   theName = prompt("Write your first name: ");
   lastName = prompt("Write your last name: ");
   birthYear = prompt("Write your birthyear: ");
@@ -113,7 +109,7 @@ function AddMuscician() {
     if (err) throw err;
     console.log('Data written to file');
   });
-}
+}*/
 function AddBand() {
   bandName = prompt("Write the name of the band: ");
   foundationDate = prompt("Write the year the band was made: ");

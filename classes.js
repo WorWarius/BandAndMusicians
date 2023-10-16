@@ -1,5 +1,20 @@
-const bandsData = require('./bands.json')
-const musicianData = require('./musicians.json')
+//const bandsData = require('./bands.json')
+//const musicianData = require('./musicians.json')
+import PromptSync from "prompt-sync";
+const prompt = PromptSync({ sigint: true })
+import fs from 'fs'
+const data = fs.readFileSync("./musicians.json")
+const savedMuscians = JSON.parse(data);
+
+let musiker = savedMuscians
+
+let theName;
+let lastName;
+let birthYear;
+let info;
+let instruments = []
+let currentBands = []
+let previousBands = []
 
 
 export class Musicians {
@@ -10,10 +25,10 @@ export class Bands {
 }
 
 export class Musician {
-  constructor(name, lastName, birthDay, info, currentBands, previousBands, instruments) {
-    this.theName = name;
+  constructor() {
+    this.theName = firstName;
     this.theLastName = lastName
-    this.theBirthDay = birthDay;
+    this.theBirthYear = birthYear;
     this.information = info;
     this.theCurrentBands = currentBands
     this.thePreviousBands = previousBands
@@ -38,6 +53,35 @@ export class Musician {
     } else {
       console.log("A new name need to have at least 1 letter")
     }
+  }
+
+
+  static AddMuscician() {
+    theName = prompt("Write your first name: ");
+    lastName = prompt("Write your last name: ");
+    birthYear = prompt("Write your birthyear: ");
+    info = prompt("Write some additional information you want to add: ");
+    const howManyInstruments = prompt("How many instruments does the musicians play? (note that singing is considered as a instrument here!): ")
+    for (let i = 0; i < parseInt(howManyInstruments); i++) {
+      const instrument = prompt("Write the instrument the artist can play: ")
+      instruments.push(instrument);
+    }
+
+    let musikern = {
+      'name': theName,
+      'lastName': lastName,
+      'birthDay': birthYear,
+      'info': info,
+      'instruments': instruments,
+      'currentBands': currentBands,
+      'previousBands': previousBands
+    }
+    musiker.push(musikern)
+
+    fs.writeFile('./musicians.json', JSON.stringify(musiker, null, 2), (err) => {
+      if (err) throw err;
+      console.log('Data written to file');
+    });
   }
 
 }
