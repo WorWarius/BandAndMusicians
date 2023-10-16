@@ -44,7 +44,15 @@ function Menu() {
 
   switch (choice.trim()) {
     case "1":
-    //Köra en funktion där användaren ska lägga till namn, efternamn, födelsedatum, information om skådisen, vilka band de är i, vilka de har varit i och vad för instrument de spelar
+      //Köra en funktion där användaren ska lägga till namn, efternamn, födelsedatum, information om skådisen, vilka band de är i, vilka de har varit i och vad för instrument de spelar
+      namn = prompt();
+      lastName = prompt();
+      birthDay = prompt();
+      info = prompt();
+
+
+
+
     case "2":
     //köra en funktion som skriver ut namnet på bandet, när det grundades, när (om) de löstes upp, info om bandet, vilka som är medlemmar och info om dem och vilka som har varit medlemmar
     case "3":

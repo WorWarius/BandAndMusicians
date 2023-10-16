@@ -21,6 +21,7 @@ export class Musician {
       this._theName = newName;
     } else {
       console.log("A new name need to have at least 1 letter")
+
     }
   }
 
