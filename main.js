@@ -1,16 +1,19 @@
 //import bandsData from ('./bands.json')
 //import musicianData from ('./musicians.json')
-//import fs from ('fs');
+import fs from 'fs'
 import PromptSync from "prompt-sync";
 const prompt = PromptSync({ sigint: true })
 //import { Band, Musician } from "./classes.js";
 
+const data = fs.readFileSync("./musicians.json")
+const savedMuscians = JSON.parse(data);
 
-let musiker = []
+let musiker = savedMuscians
+let bands = []
 
-let namn;
+let theName;
 let lastName;
-let birthDay;
+let birthYear;
 let info;
 let instruments = []
 let currentBands = []
@@ -18,11 +21,11 @@ let previousBands = []
 
 let bandName;
 let foundationDate;
+let isDisbanded;
 let disbandment;
 let bandInfo;
-let theMembersInfo = []
-let previousMemberInfo = []
-
+let currentMembers = []
+let previousMembers = []
 
 
 Menu();
@@ -44,48 +47,102 @@ function Menu() {
 
   switch (choice.trim()) {
     case "1":
-      //Köra en funktion där användaren ska lägga till namn, efternamn, födelsedatum, information om skådisen, vilka band de är i, vilka de har varit i och vad för instrument de spelar
-      namn = prompt("Write your first name: ");
-      lastName = prompt("Write your last name: ");
-      birthDay = prompt("Write your birthday in this way: yyyy-mm-dd: ");
-      info = prompt("Write some additional information you want to add: ");
-      const howManyInstruments = prompt("How many instruments does the musicians play? (note that singing is considered as a instrument here!): ")
-      for (let i = 0; i < parseInt(howManyInstruments); i++) {
-        const instrument = prompt("Write the instrument the artist can play")
-        instruments.push(instrument);
-      }
-
-      let musikern = {
-        'name': namn,
-        'lastName': lastName,
-        'birthDay': birthDay,
-        'info': info,
-        'instruments': instruments,
-        'currentBands': currentBands,
-        'previousBands': previousBands
-      }
-      musiker.push(musikern)
-      console.log(musiker[0])
+      //Köra en funktion där användaren ska lägga till theName, efternamn, födelsedatum, information om skådisen, vilka band de är i, vilka de har varit i och vad för instrument de spelar
+      AddMuscician();
+      break;
 
 
     case "2":
-    //köra en funktion som skriver ut namnet på bandet, när det grundades, när (om) de löstes upp, info om bandet, vilka som är medlemmar och info om dem och vilka som har varit medlemmar
+      //köra en funktion som skriver ut namnet på bandet, när det grundades, när (om) de löstes upp, info om bandet, vilka som är medlemmar och info om dem och vilka som har varit medlemmar
+      AddBand();
+      break;
+
+
     case "3":
-    //En funktion för att ta bort en musiker helt
+      //En funktion för att ta bort en musiker helt
+      console.log("Hej")
+      break;
     case "4":
-    //En funktion för att ta bort ett band helt
+      //En funktion för att ta bort ett band helt
+      break;
     case "5":
-    //en funktion som visar upp alla musiker där de kan välja en musiker och ett band att lägga till musikern i
+      //en funktion som visar upp alla musiker där de kan välja en musiker och ett band att lägga till musikern i
+      break;
     case "6":
-    //en funktiomn som tar upp en alla musiker där man kan klicka på en musiker och ta bort de från ett band om de är med ett band (kanske kan ha en bool som tittar om de är i ett band eller inte)
+      //en funktiomn som tar upp en alla musiker där man kan klicka på en musiker och ta bort de från ett band om de är med ett band (kanske kan ha en bool som tittar om de är i ett band eller inte)
+      break;
     case "7":
-    //En funktion som tar upp en lista på alla musiker där använderen kan välja en musiker och skriver då ut all info om dem
+      //En funktion som tar upp en lista på alla musiker där använderen kan välja en musiker och skriver då ut all info om dem
+      break;
     case "8":
-    //En funktion som tar upp en lista på band  där använderen kan välja ett band och skriver då ut all info om det
+      //En funktion som tar upp en lista på band  där använderen kan välja ett band och skriver då ut all info om det
+      break;
     case "9":
-    //avsluta allt
+      //avsluta allt
+      break;
     default:
-    //Gör så att användaren inte kan skriva alternativ som inte finns.
+      //Gör så att användaren inte kan skriva alternativ som inte finns.
+      break;
 
   }
+
+}
+function AddMuscician() {
+  theName = prompt("Write your first name: ");
+  lastName = prompt("Write your last name: ");
+  birthYear = prompt("Write your birthyear: ");
+  info = prompt("Write some additional information you want to add: ");
+  const howManyInstruments = prompt("How many instruments does the musicians play? (note that singing is considered as a instrument here!): ")
+  for (let i = 0; i < parseInt(howManyInstruments); i++) {
+    const instrument = prompt("Write the instrument the artist can play: ")
+    instruments.push(instrument);
+  }
+
+  let musikern = {
+    'name': theName,
+    'lastName': lastName,
+    'birthDay': birthYear,
+    'info': info,
+    'instruments': instruments,
+    'currentBands': currentBands,
+    'previousBands': previousBands
+  }
+  musiker.push(musikern)
+
+  fs.writeFile('./musicians.json', JSON.stringify(musiker, null, 2), (err) => {
+    if (err) throw err;
+    console.log('Data written to file');
+  });
+}
+function AddBand() {
+  bandName = prompt("Write the name of the band: ");
+  foundationDate = prompt("Write the year the band was made: ");
+  console.log(`Is the band disbanded?
+      1. Yes
+      2. No
+      `)
+  isDisbanded = prompt()
+  if (isDisbanded == 1) {
+    isDisbanded = "Yes"
+    disbandment = prompt("Write the year the band disbanded: ");
+  } else if (isDisbanded == 2) {
+    isDisbanded = "No"
+    disbandment = "Currently Active"
+  } else {
+    console.log("You did not give a valid answer")
+  }
+  bandInfo = prompt("Write some additional information you want to add: ");
+
+  let theBand = {
+    'Band Name': bandName,
+    'Foundation Date': foundationDate,
+    'Disbanded': isDisbanded,
+    'Disbandment Info': disbandment,
+    'Band Info': bandInfo,
+    'Current Members': currentMembers,
+    'Previous Members': previousMembers
+  }
+
+  bands.push(theBand)
+  console.log(bands[0])
 }

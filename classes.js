@@ -1,6 +1,14 @@
 const bandsData = require('./bands.json')
 const musicianData = require('./musicians.json')
 
+
+export class Musicians {
+
+}
+export class Bands {
+
+}
+
 export class Musician {
   constructor(name, lastName, birthDay, info, currentBands, previousBands, instruments) {
     this.theName = name;
@@ -24,7 +32,6 @@ export class Musician {
 
     }
   }
-
   set lastName(newLastName) {
     if (newLastName.length > 1) {
       this._theLastName = newLastName;
@@ -32,8 +39,6 @@ export class Musician {
       console.log("A new name need to have at least 1 letter")
     }
   }
-
-
 
 }
 export class Band {
@@ -50,4 +55,8 @@ export class Band {
   {
 
   }
+}
+
+export class AllBands {
+
 }
