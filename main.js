@@ -44,7 +44,6 @@ function Menu() {
 
   switch (choice.trim()) {
     case "1":
-      //Köra en funktion där användaren ska lägga till theName, efternamn, födelsedatum, information om skådisen, vilka band de är i, vilka de har varit i och vad för instrument de spelar
       Musician.AddMuscician();
       break;
 
@@ -53,10 +52,7 @@ function Menu() {
       //köra en funktion som skriver ut namnet på bandet, när det grundades, när (om) de löstes upp, info om bandet, vilka som är medlemmar och info om dem och vilka som har varit medlemmar
       //AddBand();
       break;
-
-
     case "3":
-      //En funktion för att ta bort en musiker helt
       Musician.RemoveMusician();
       break;
     case "4":
@@ -69,20 +65,17 @@ function Menu() {
       //en funktiomn som tar upp en alla musiker där man kan klicka på en musiker och ta bort de från ett band om de är med ett band (kanske kan ha en bool som tittar om de är i ett band eller inte)
       break;
     case "7":
-      //En funktion som tar upp en lista på alla musiker där använderen kan välja en musiker och skriver då ut all info om dem
       Musician.MusicianInfo();
       break;
     case "8":
       //En funktion som tar upp en lista på band  där använderen kan välja ett band och skriver då ut all info om det
       break;
     case "9":
-      //avsluta allt
       run = false;
       Musician.UpploadMusicianData();
       break;
     default:
-      //Gör så att användaren inte kan skriva alternativ som inte finns.
-      run = false;
+      console.log("That is not a valid option")
       break;
 
   }
@@ -115,6 +108,7 @@ function Menu() {
     console.log('Data written to file');
   });
 }*/
+
 function AddBand() {
   bandName = prompt("Write the name of the band: ");
   foundationDate = prompt("Write the year the band was made: ");

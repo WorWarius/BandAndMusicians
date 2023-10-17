@@ -56,6 +56,7 @@ export class Musician {
 
 
   static AddMuscician() {
+    clear();
     //instruments = []; Checka om denna eller den andra behövs. Tror inte båda behövs
     theName = prompt("Write your first name: ");
     lastName = prompt("Write your last name: ");
@@ -88,8 +89,8 @@ export class Musician {
     this.WriteMusicianList()
 
     let whichToRemove = parseInt(prompt());
-    if (musiker.indexOf(whichToRemove)) {
-      musiker.splice(whichToRemove)
+    if (whichToRemove >= 0 && whichToRemove < musiker.length) {
+      musiker.splice(whichToRemove, 1)
       console.log("removing the musician!")
     }
     else {
@@ -99,7 +100,6 @@ export class Musician {
     for (let i = 0; i < musiker.length; i++) {
       console.log(`${i}.`, musiker[i].name);
     }
-    //this.UpploadMusicianData();
   }
 
   static UpploadMusicianData() {
@@ -116,11 +116,12 @@ export class Musician {
   }
 
   static MusicianInfo() {
+    clear();
     console.log("Which Musician do you want information of? Please pick the musican by writing the number next to their name at the bottom: ")
     this.WriteMusicianList();
 
     let whichToGetInfoFrom = parseInt(prompt());
-    if (musiker.indexOf(whichToGetInfoFrom)) {
+    if (whichToGetInfoFrom >= 0 && whichToGetInfoFrom < musiker.length) {
       console.log(musiker[whichToGetInfoFrom])
 
     }
