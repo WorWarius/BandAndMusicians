@@ -3,6 +3,7 @@
 import PromptSync from "prompt-sync";
 const prompt = PromptSync({ sigint: true })
 import fs from 'fs'
+import { clear } from "console";
 const data = fs.readFileSync("./musicians.json")
 const savedMuscians = JSON.parse(data);
 
@@ -15,6 +16,9 @@ let info;
 let instruments = []
 let currentBands = []
 let previousBands = []
+
+const clearInstruments = []
+
 
 
 export class Musicians {
@@ -57,6 +61,7 @@ export class Musician {
 
 
   static AddMuscician() {
+    //instruments = []; Checka om denna eller den andra behövs. Tror inte båda behövs
     theName = prompt("Write your first name: ");
     lastName = prompt("Write your last name: ");
     birthYear = prompt("Write your birthyear: ");
@@ -76,14 +81,33 @@ export class Musician {
       'currentBands': currentBands,
       'previousBands': previousBands
     }
+    instruments = [];
     musiker.push(musikern)
 
+    this.UpploadMusicianData()
+
+
+  }
+  static RemoveMusician() {
+    clear();
+    console.log("Pick which musician to remove by picking its number")
+    for (let i = 0; i < musiker.length; i++) {
+      console.log(`${i}.`, musiker[i].name);
+
+
+    }
+    for (let i = 0; i < clearInstruments.length; i++) {
+      console.log(clearInstruments[i]);
+
+
+    }
+  }
+  static UpploadMusicianData() {
     fs.writeFile('./musicians.json', JSON.stringify(musiker, null, 2), (err) => {
       if (err) throw err;
       console.log('Data written to file');
     });
   }
-
 }
 export class Band {
   constructor() {

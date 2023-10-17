@@ -8,7 +8,7 @@ import { Band, Musician } from "./classes.js";
 //const data = fs.readFileSync("./musicians.json")
 //const savedMuscians = JSON.parse(data);
 
-let run = true
+let run = true //används för att main i en while loop
 let bands = []
 
 let bandName;
@@ -24,8 +24,10 @@ while (run == true) {
   Menu()
 }
 */
+while (run == true) {
+  Menu();
+}
 
-Menu();
 function Menu() {
   console.log("1. Lägg till musiker")
   console.log("2. Lägg till band")
@@ -54,7 +56,7 @@ function Menu() {
 
     case "3":
       //En funktion för att ta bort en musiker helt
-      console.log("Hej")
+      Musician.RemoveMusician();
       break;
     case "4":
       //En funktion för att ta bort ett band helt
