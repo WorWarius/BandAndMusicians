@@ -24,9 +24,6 @@ const clearInstruments = []
 export class Musicians {
 
 }
-export class Bands {
-
-}
 
 export class Musician {
   constructor() {
@@ -38,11 +35,8 @@ export class Musician {
     this.thePreviousBands = previousBands
     this.theInstruments = instruments
   }
-  displayMusician(theMusician) //denna metod ska skriva ut all informationen om Musikern som de bad att få info om
-  {
-    console.log()
-  }
 
+  /*
   set firstName(newName) {
     if (newName.length > 1) {
       this._theName = newName;
@@ -58,6 +52,7 @@ export class Musician {
       console.log("A new name need to have at least 1 letter")
     }
   }
+  */
 
 
   static AddMuscician() {
@@ -85,15 +80,13 @@ export class Musician {
     musiker.push(musikern)
 
     //this.UpploadMusicianData()
-
-
   }
+
   static RemoveMusician() {
     clear()
     console.log("Pick which musician to remove by picking its number")
-    for (let i = 0; i < musiker.length; i++) {
-      console.log(`${i}.`, musiker[i].name);
-    }
+    this.WriteMusicianList()
+
     let whichToRemove = parseInt(prompt());
     if (musiker.indexOf(whichToRemove)) {
       musiker.splice(whichToRemove)
@@ -102,19 +95,47 @@ export class Musician {
     else {
       console.log("Is not a valid option.")
     }
+
     for (let i = 0; i < musiker.length; i++) {
       console.log(`${i}.`, musiker[i].name);
     }
     //this.UpploadMusicianData();
-
   }
+
   static UpploadMusicianData() {
     fs.writeFile('./musicians.json', JSON.stringify(musiker, null, 2), (err) => {
       if (err) throw err;
       console.log('Data written to file');
     });
   }
+
+  static WriteMusicianList() {
+    for (let i = 0; i < musiker.length; i++) {
+      console.log(`${i}.`, musiker[i].name);
+    }
+  }
+
+  static MusicianInfo() {
+    console.log("Which Musician do you want information of? Please pick the musican by writing the number next to their name at the bottom: ")
+    this.WriteMusicianList();
+
+    let whichToGetInfoFrom = parseInt(prompt());
+    if (musiker.indexOf(whichToGetInfoFrom)) {
+      console.log(musiker[whichToGetInfoFrom])
+
+    }
+    else {
+      console.log("Is not a valid option.")
+    }
+  }
 }
+
+
+
+
+
+
+
 export class Band {
   constructor() {
     this.bandName = theBandName;
@@ -134,3 +155,9 @@ export class Band {
 export class AllBands {
 
 }
+
+export class Bands {
+
+}
+
+

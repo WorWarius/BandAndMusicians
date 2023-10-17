@@ -70,6 +70,7 @@ function Menu() {
       break;
     case "7":
       //En funktion som tar upp en lista på alla musiker där använderen kan välja en musiker och skriver då ut all info om dem
+      Musician.MusicianInfo();
       break;
     case "8":
       //En funktion som tar upp en lista på band  där använderen kan välja ett band och skriver då ut all info om det
