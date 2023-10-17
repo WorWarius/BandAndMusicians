@@ -84,23 +84,29 @@ export class Musician {
     instruments = [];
     musiker.push(musikern)
 
-    this.UpploadMusicianData()
+    //this.UpploadMusicianData()
 
 
   }
   static RemoveMusician() {
-    clear();
+    clear()
     console.log("Pick which musician to remove by picking its number")
     for (let i = 0; i < musiker.length; i++) {
       console.log(`${i}.`, musiker[i].name);
-
-
     }
-    for (let i = 0; i < clearInstruments.length; i++) {
-      console.log(clearInstruments[i]);
-
-
+    let whichToRemove = parseInt(prompt());
+    if (musiker.indexOf(whichToRemove)) {
+      musiker.splice(whichToRemove)
+      console.log("removing the musician!")
     }
+    else {
+      console.log("Is not a valid option.")
+    }
+    for (let i = 0; i < musiker.length; i++) {
+      console.log(`${i}.`, musiker[i].name);
+    }
+    //this.UpploadMusicianData();
+
   }
   static UpploadMusicianData() {
     fs.writeFile('./musicians.json', JSON.stringify(musiker, null, 2), (err) => {

@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "name": "Linus",
+    "lastName": "Edlund",
+    "birthDay": "2000",
+    "info": "Damn he is cool",
+    "instruments": [
+      "Singing"
+    ],
+    "currentBands": [],
+    "previousBands": []
+  },
+  {
+    "name": "Danny",
+    "lastName": "Sau",
+    "birthDay": "2000",
+    "info": "Good hair",
+    "instruments": [
+      "Singing"
+    ],
+    "currentBands": [],
+    "previousBands": []
+  },
+  {
+    "name": "Danny",
+    "lastName": "Damnnit",
+    "birthDay": "2003",
+    "info": "Sexy",
+    "instruments": [
+      "Flute"
+    ],
+    "currentBands": [],
+    "previousBands": []
+  }
+]

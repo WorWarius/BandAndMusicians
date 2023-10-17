@@ -4,6 +4,7 @@ import fs from 'fs'
 import PromptSync from "prompt-sync";
 const prompt = PromptSync({ sigint: true })
 import { Band, Musician } from "./classes.js";
+import { clear } from 'console';
 
 //const data = fs.readFileSync("./musicians.json")
 //const savedMuscians = JSON.parse(data);
@@ -76,6 +77,7 @@ function Menu() {
     case "9":
       //avsluta allt
       run = false;
+      Musician.UpploadMusicianData();
       break;
     default:
       //Gör så att användaren inte kan skriva alternativ som inte finns.
