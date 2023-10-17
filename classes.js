@@ -17,10 +17,6 @@ let instruments = []
 let currentBands = []
 let previousBands = []
 
-const clearInstruments = []
-
-
-
 export class Musicians {
 
 }
@@ -57,10 +53,23 @@ export class Musician {
 
   static AddMuscician() {
     clear();
+    let isNumber = false;
     //instruments = []; Checka om denna eller den andra behövs. Tror inte båda behövs
     theName = prompt("Write your first name: ");
     lastName = prompt("Write your last name: ");
-    birthYear = prompt("Write your birthyear: ");
+    while (isNumber == false) {
+      birthYear = parseInt(prompt("Write your birthyear (It should be written like this: yyyy): "));
+      if (typeof birthYear === 'number' && !isNaN(birthYear)) {
+        console.log("Hej")
+        isNumber = true;
+      }
+      else {
+        isNumber = false;
+        console.log("You did not put in a valid year")
+      }
+    }
+
+
     info = prompt("Write some additional information you want to add: ");
     const howManyInstruments = prompt("How many instruments does the musicians play? (note that singing is considered as a instrument here!): ")
     for (let i = 0; i < parseInt(howManyInstruments); i++) {
