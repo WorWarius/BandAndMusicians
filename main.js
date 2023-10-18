@@ -13,7 +13,7 @@ let run = true //används för att main i en while loop
 let bands = []
 
 let bandName;
-let foundationDate;
+let foundationYear;
 let isDisbanded;
 let disbandment;
 let bandInfo;
@@ -81,37 +81,10 @@ function Menu() {
   }
 
 }
-/*function AddMuscician() {
-  theName = prompt("Write your first name: ");
-  lastName = prompt("Write your last name: ");
-  birthYear = prompt("Write your birthyear: ");
-  info = prompt("Write some additional information you want to add: ");
-  const howManyInstruments = prompt("How many instruments does the musicians play? (note that singing is considered as a instrument here!): ")
-  for (let i = 0; i < parseInt(howManyInstruments); i++) {
-    const instrument = prompt("Write the instrument the artist can play: ")
-    instruments.push(instrument);
-  }
-
-  let musikern = {
-    'name': theName,
-    'lastName': lastName,
-    'birthDay': birthYear,
-    'info': info,
-    'instruments': instruments,
-    'currentBands': currentBands,
-    'previousBands': previousBands
-  }
-  musiker.push(musikern)
-
-  fs.writeFile('./musicians.json', JSON.stringify(musiker, null, 2), (err) => {
-    if (err) throw err;
-    console.log('Data written to file');
-  });
-}*/
 
 function AddBand() {
   bandName = prompt("Write the name of the band: ");
-  foundationDate = prompt("Write the year the band was made: ");
+  foundationYear = prompt("Write the year the band was made: ");
   console.log(`Is the band disbanded?
       1. Yes
       2. No
@@ -130,7 +103,7 @@ function AddBand() {
 
   let theBand = {
     'Band Name': bandName,
-    'Foundation Date': foundationDate,
+    'Foundation Year': foundationYear,
     'Disbanded': isDisbanded,
     'Disbandment Info': disbandment,
     'Band Info': bandInfo,

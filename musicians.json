@@ -72,5 +72,16 @@
     ],
     "currentBands": [],
     "previousBands": []
+  },
+  {
+    "name": "Linus",
+    "lastName": "Edlund",
+    "birthDay": 2000,
+    "info": "Cool",
+    "instruments": [
+      "Singing"
+    ],
+    "currentBands": [],
+    "previousBands": []
   }
 ]

@@ -60,7 +60,6 @@ export class Musician {
     while (isNumber == false) {
       birthYear = parseInt(prompt("Write your birthyear (It should be written like this: yyyy): "));
       if (typeof birthYear === 'number' && !isNaN(birthYear)) {
-        console.log("Hej")
         isNumber = true;
       }
       else {
@@ -68,14 +67,23 @@ export class Musician {
         console.log("You did not put in a valid year")
       }
     }
-
-
     info = prompt("Write some additional information you want to add: ");
-    const howManyInstruments = prompt("How many instruments does the musicians play? (note that singing is considered as a instrument here!): ")
-    for (let i = 0; i < parseInt(howManyInstruments); i++) {
-      const instrument = prompt("Write the instrument the artist can play: ")
-      instruments.push(instrument);
+    isNumber = false;
+    while (isNumber == false) {
+      const howManyInstruments = parseInt(prompt("How many instruments does the musicians play? (note that singing is considered as a instrument here!): "))
+      if (typeof howManyInstruments === 'number' && !isNaN(howManyInstruments)) {
+        for (let i = 0; i < parseInt(howManyInstruments); i++) {
+          const instrument = prompt("Write the instrument the artist can play: ")
+          instruments.push(instrument);
+
+        }
+        isNumber = true;
+      }
+      else {
+        console.log("You have to write how many instruments they play with numbers! ")
+      }
     }
+
 
     let musikern = {
       'name': theName,
@@ -150,6 +158,7 @@ export class Band {
   constructor() {
     this.bandName = theBandName;
     this.foundation = birthDay;
+    this.isDisbanded = ifItsDisbanded;
     this.disbandDate = currentBands
     this.bandInformation = info;
     this.membersInfo()
