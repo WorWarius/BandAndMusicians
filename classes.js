@@ -53,23 +53,22 @@ export class Musician {
 
   static AddMuscician() {
     clear();
-    let isNumber = false;
-    //instruments = []; Checka om denna eller den andra behövs. Tror inte båda behövs
+    let stopLoopCheck = false;
     theName = prompt("Write your first name: ");
     lastName = prompt("Write your last name: ");
-    while (isNumber == false) {
+    while (stopLoopCheck == false) {
       birthYear = parseInt(prompt("Write your birthyear (It should be written like this: yyyy): "));
       if (typeof birthYear === 'number' && !isNaN(birthYear)) {
-        isNumber = true;
+        stopLoopCheck = true;
       }
       else {
-        isNumber = false;
+        stopLoopCheck = false;
         console.log("You did not put in a valid year")
       }
     }
     info = prompt("Write some additional information you want to add: ");
-    isNumber = false;
-    while (isNumber == false) {
+    stopLoopCheck = false;
+    while (stopLoopCheck == false) {
       const howManyInstruments = parseInt(prompt("How many instruments does the musicians play? (note that singing is considered as a instrument here!): "))
       if (typeof howManyInstruments === 'number' && !isNaN(howManyInstruments)) {
         for (let i = 0; i < parseInt(howManyInstruments); i++) {
@@ -77,7 +76,7 @@ export class Musician {
           instruments.push(instrument);
 
         }
-        isNumber = true;
+        stopLoopCheck = true;
       }
       else {
         console.log("You have to write how many instruments they play with numbers! ")
@@ -97,7 +96,6 @@ export class Musician {
     instruments = [];
     musiker.push(musikern)
 
-    //this.UpploadMusicianData()
   }
 
   static RemoveMusician() {
@@ -151,8 +149,15 @@ export class Musician {
 
 
 
+let bands = []
 
-
+let bandName;
+let foundationYear;
+let isDisbanded;
+let disbandmentYear;
+let bandInfo;
+let currentMembers = []
+let previousMembers = []
 
 export class Band {
   constructor() {
@@ -165,11 +170,66 @@ export class Band {
     this.previousMemberInfo()
   }
 
-  displayBand(theBand) //denna metod ska skriva ut all informationen om bandet som de bad att få info om 
-  {
+  static CreateBand() {
+    clear();
+    let stopLoopCheck = false;
+    bandName = prompt("Write the name of the band: ");
+    while (stopLoopCheck == false) {
+      foundationYear = parseInt(prompt("Write the year the band was founded (It should be written like this: yyyy): "));
+      if (typeof foundationYear === 'number' && !isNaN(foundationYear)) {
+        stopLoopCheck = true;
+      }
+      else {
+        stopLoopCheck = false;
+        console.log("You did not put in a valid year")
+      }
+    }
+    stopLoopCheck = false
+    while (stopLoopCheck == false) {
+      console.log(`Is the band disbanded?
+      1. Yes
+      2. No
+      `)
+      isDisbanded = parseInt(prompt())
+      if (isDisbanded == 1) {
+        isDisbanded = "Yes"
+        while (stopLoopCheck == false) {
+          disbandmentYear = parseInt(prompt("Write the year the band disbanded: "));
+          if (typeof disbandmentYear === 'number' && !isNaN(disbandmentYear)) {
+            stopLoopCheck = true;
+          } else {
+            console.log("You did not put in a valid year: ")
+          }
+
+        }
+
+
+      } else if (isDisbanded == 2) {
+        isDisbanded = "No"
+        disbandmentYear = "Currently Active"
+        stopLoopCheck = true;
+      } else {
+        console.log("You did not give a valid answer")
+      }
+    }
+
+    bandInfo = prompt("Write some additional information you want to add: ");
+
+
+    let theBandToAdd = {
+      'Band Name': bandName,
+      'Foundation Year': foundationYear,
+      'Disbanded': isDisbanded,
+      'Disbandment Info': disbandment,
+      'Band Info': bandInfo,
+      'Current Members': currentMembers,
+      'Previous Members': previousMembers
+    }
+    bands.push(theBandToAdd)
 
   }
 }
+
 
 export class AllBands {
 

@@ -10,15 +10,6 @@ import { clear } from 'console';
 //const savedMuscians = JSON.parse(data);
 
 let run = true //används för att main i en while loop
-let bands = []
-
-let bandName;
-let foundationYear;
-let isDisbanded;
-let disbandment;
-let bandInfo;
-let currentMembers = []
-let previousMembers = []
 
 /*
 while (run == true) {
