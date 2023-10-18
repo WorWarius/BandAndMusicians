@@ -1,11 +1,11 @@
-//const bandsData = require('./bands.json')
-//const musicianData = require('./musicians.json')
 import PromptSync from "prompt-sync";
 const prompt = PromptSync({ sigint: true })
 import fs from 'fs'
 import { clear } from "console";
-const data = fs.readFileSync("./musicians.json")
-const savedMuscians = JSON.parse(data);
+
+//#region 
+const musicanData = fs.readFileSync("./musicians.json")
+const savedMuscians = JSON.parse(musicanData);
 
 let musiker = savedMuscians
 
@@ -16,6 +16,7 @@ let info;
 let instruments = []
 let currentBands = []
 let previousBands = []
+//#endregion
 
 export class Musicians {
 
@@ -49,7 +50,6 @@ export class Musician {
     }
   }
   */
-
 
   static AddMuscician() {
     clear();
@@ -126,7 +126,7 @@ export class Musician {
 
   static WriteMusicianList() {
     for (let i = 0; i < musiker.length; i++) {
-      console.log(`${i}.`, musiker[i].name);
+      console.log(`${i}.`, musiker[i].name, musiker[i].lastName);
     }
   }
 
@@ -146,10 +146,11 @@ export class Musician {
   }
 }
 
+//#region 
+const bandData = fs.readFileSync("./bands.json")
+const savedBands = JSON.parse(bandData);
 
-
-
-let bands = []
+let bands = savedBands
 
 let bandName;
 let foundationYear;
@@ -158,6 +159,7 @@ let disbandmentYear;
 let bandInfo;
 let currentMembers = []
 let previousMembers = []
+//#endregion
 
 export class Band {
   constructor() {
@@ -216,16 +218,16 @@ export class Band {
     bandInfo = prompt("Write some additional information you want to add: ");
 
     console.log("Which member do you want to add to the band?")
-    WriteMusicianList();
+    Musician.WriteMusicianList();
 
     let theBandToAdd = {
-      'Band Name': bandName,
-      'Foundation Year': foundationYear,
+      'Band_Name': bandName,
+      'Foundation_Year': foundationYear,
       'Disbanded': isDisbanded,
-      'Disbandment Info': disbandment,
-      'Band Info': bandInfo,
-      'Current Members': currentMembers,
-      'Previous Members': previousMembers
+      'Disbandment_Year': disbandmentYear,
+      'Band_Info': bandInfo,
+      'Current_Members': currentMembers,
+      'Previous_Members': previousMembers
     }
     bands.push(theBandToAdd)
 
@@ -240,25 +242,23 @@ export class Band {
 
   static WriteBandList() {
     for (let i = 0; i < bands.length; i++) {
-      console.log(`${i}.`, bands[i].name);
+      console.log(`${i}.`, bands[i].Band_Name);
     }
   }
-
   static BandInfo() {
     clear();
     console.log("Which Band do you want information of? Please pick the Band by writing the number next to their name at the bottom: ")
     this.WriteBandList();
 
     let whichToGetInfoFrom = parseInt(prompt());
-    if (whichToGetInfoFrom >= 0 && whichToGetInfoFrom < musiker.length) {
-      console.log(musiker[whichToGetInfoFrom])
+    if (whichToGetInfoFrom >= 0 && whichToGetInfoFrom < bands.length) {
+      console.log(bands[whichToGetInfoFrom])
 
     }
     else {
       console.log("Is not a valid option.")
     }
   }
-
 }
 
 

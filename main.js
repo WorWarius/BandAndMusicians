@@ -40,12 +40,13 @@ function Menu() {
 
 
     case "2":
-      //köra en funktion som skriver ut namnet på bandet, när det grundades, när (om) de löstes upp, info om bandet, vilka som är medlemmar och info om dem och vilka som har varit medlemmar
-      //AddBand();
+      Band.CreateBand();
       break;
+
     case "3":
       Musician.RemoveMusician();
       break;
+
     case "4":
       //En funktion för att ta bort ett band helt
 
