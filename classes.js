@@ -86,13 +86,13 @@ export class Musician {
       }
     }
     let currentYear = new Date().getFullYear();
-    let musicanAge = currentYear - birthYear
+    theAge = currentYear - birthYear
 
     let musikern = {
       'name': theName,
       'lastName': lastName,
       'birthDay': birthYear,
-      'age': musicanAge,
+      'age': theAge,
       'info': info,
       'instruments': instruments,
       'currentBands': currentBands,
@@ -190,31 +190,37 @@ export class Musician {
       this.WriteMusicianList();
       musicianToRemove = parseInt(prompt())
       if (musicianToRemove >= 0 && musicianToRemove < musiker.length) {
-        console.log("Which band do you want to remove it from? ")
+        if (musiker[musicianToRemove].currentBands.length > 0) {
+          console.log("Which band do you want to remove it from? ")
 
-        for (let i = 0; i < musiker.currentBands.length; i++) {
-          console.log(`${i}.`, musiker.currentBands[i].Band_Name);
+          for (let i = 0; i < musiker[musicianToRemove].currentBands.length; i++) {
+            console.log(`${i}.`, musiker[musicianToRemove].currentBands[i]);
+          }
+
+
+          fromBand = parseInt(prompt())
+          if (fromBand >= 0 && fromBand < bands[fromBand].Current_Members.length) {
+
+            /*
+            musiker[musicanToAdd].currentBands.push(bands[toBand].Band_Name)
+            bands[toBand].Current_Members.push(musiker[musicanToAdd].name)
+            */
+            musiker[musicianToRemove].currentBands.splice(bands[fromBand], 1)
+            bands[fromBand].Current_Members.splice(musiker[musicianToRemove], 1)
+
+            console.log("The musician is now removed from the band!")
+            theRun = true;
+          }
+          else {
+            console.log("That is not a valid pick: ")
+          }
+        } else {
+          console.log("That musicians are not part of any bands: ")
         }
-
-
-        fromBand = parseInt(prompt())
-        if (fromBand >= 0 && fromBand < musiker.currentBands.length) {
-
-          /*
-          musiker[musicanToAdd].currentBands.push(bands[toBand].Band_Name)
-          bands[toBand].Current_Members.push(musiker[musicanToAdd].name)
-          */
-
-          console.log("The musician is now removed from the band!")
-          theRun = true;
-        }
-        else {
-          console.log("That is not a valid pick: ")
-        }
-
       } else {
         console.log("That is not a valid pick: ")
       }
+
     }
   }
 

@@ -10,5 +10,18 @@
     ],
     "currentBands": [],
     "previousBands": []
+  },
+  {
+    "name": "Danue",
+    "lastName": "bergman",
+    "birthDay": 1995,
+    "age": 28,
+    "info": "Dumb",
+    "instruments": [
+      "Singing",
+      "Piano"
+    ],
+    "currentBands": [],
+    "previousBands": []
   }
 ]
