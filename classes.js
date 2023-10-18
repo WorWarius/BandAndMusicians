@@ -201,11 +201,7 @@ export class Musician {
           fromBand = parseInt(prompt())
           if (fromBand >= 0 && fromBand < bands[fromBand].Current_Members.length) {
 
-            /*
-            musiker[musicanToAdd].currentBands.push(bands[toBand].Band_Name)
-            bands[toBand].Current_Members.push(musiker[musicanToAdd].name)
-            */
-            musiker[musicianToRemove].currentBands.splice(bands[fromBand], 1)
+            musiker[musicianToRemove].currentBands.splice(bands[fromBand], 1) //skulle kunna göra någon typ av funktion för detta och att lägga till som man kallar på med två variabler istället
             bands[fromBand].Current_Members.splice(musiker[musicianToRemove], 1)
 
             console.log("The musician is now removed from the band!")
@@ -309,6 +305,7 @@ export class Band {
     bands.push(theBandToAdd)
 
   }
+
   static RemoveBand() {
     clear()
     console.log("Pick which which band you want to remove by picking its number")
@@ -340,6 +337,7 @@ export class Band {
       console.log(`${i}.`, bands[i].Band_Name);
     }
   }
+
   static BandInfo() {
     clear();
     console.log("Which Band do you want information of? Please pick the Band by writing the number next to their name at the bottom: ")
@@ -354,8 +352,6 @@ export class Band {
       console.log("Is not a valid option.")
     }
   }
-
-
 }
 
 
