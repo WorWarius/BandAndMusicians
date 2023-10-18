@@ -2,81 +2,8 @@
   {
     "name": "Linus",
     "lastName": "Edlund",
-    "birthDay": "2000",
-    "info": "he is cool",
-    "instruments": [
-      "singing"
-    ],
-    "currentBands": [],
-    "previousBands": []
-  },
-  {
-    "name": "Anna",
-    "lastName": "Magnusson",
-    "birthDay": "2001",
-    "info": "She is cute",
-    "instruments": [
-      "Singing"
-    ],
-    "currentBands": [],
-    "previousBands": []
-  },
-  {
-    "name": "Linus",
-    "lastName": "Edlund",
-    "birthDay": null,
-    "info": "cool",
-    "instruments": [
-      "piano"
-    ],
-    "currentBands": [],
-    "previousBands": []
-  },
-  {
-    "name": "Anna",
-    "lastName": "Magnusson",
-    "birthDay": 2001,
-    "info": "qfojkaejkf",
-    "instruments": [],
-    "currentBands": [],
-    "previousBands": []
-  },
-  {
-    "name": "Johnny",
-    "lastName": "edlund",
-    "birthDay": 1974,
-    "info": "afafd",
-    "instruments": [
-      "Singing"
-    ],
-    "currentBands": [],
-    "previousBands": []
-  },
-  {
-    "name": "adjhasid",
-    "lastName": "afasf",
-    "birthDay": null,
-    "info": "asfaf",
-    "instruments": [],
-    "currentBands": [],
-    "previousBands": []
-  },
-  {
-    "name": "Linus",
-    "lastName": "Edlund",
     "birthDay": 2000,
-    "info": "Is very cool",
-    "instruments": [
-      "Piano",
-      "Dumbo"
-    ],
-    "currentBands": [],
-    "previousBands": []
-  },
-  {
-    "name": "Linus",
-    "lastName": "Edlund",
-    "birthDay": 2000,
+    "age": 23,
     "info": "Cool",
     "instruments": [
       "Singing"

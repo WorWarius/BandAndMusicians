@@ -13,6 +13,7 @@ let musiker = savedMuscians
 let theName;
 let lastName;
 let birthYear;
+let theAge;
 let info;
 let instruments = []
 let currentBands = []
@@ -28,6 +29,7 @@ export class Musician {
     this.theName = firstName;
     this.theLastName = lastName
     this.theBirthYear = birthYear;
+    this.theAge = musiciansAge;
     this.information = info;
     this.theCurrentBands = currentBands
     this.thePreviousBands = previousBands
@@ -83,12 +85,14 @@ export class Musician {
         console.log("You have to write how many instruments they play with numbers! ")
       }
     }
-
+    let currentYear = new Date().getFullYear();
+    let musicanAge = currentYear - birthYear
 
     let musikern = {
       'name': theName,
       'lastName': lastName,
       'birthDay': birthYear,
+      'age': musicanAge,
       'info': info,
       'instruments': instruments,
       'currentBands': currentBands,
@@ -145,7 +149,8 @@ export class Musician {
       console.log("Is not a valid option.")
     }
   }
-  static AddMusicianToBand() { //Inte testat än, avvaktar då jag måste lägga till en annan sak först.
+
+  static AddMusicianToBand() {
     let musicanToAdd;
     let toBand;
     let theRun = false;
@@ -158,8 +163,11 @@ export class Musician {
         Band.WriteBandList();
         toBand = parseInt(prompt())
         if (toBand >= 0 && toBand < bands.length) {
+
           musiker[musicanToAdd].currentBands.push(bands[toBand].Band_Name)
           bands[toBand].Current_Members.push(musiker[musicanToAdd].name)
+
+          console.log("The musician is now added to the band!")
           theRun = true;
         }
         else {
