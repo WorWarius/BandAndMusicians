@@ -2,6 +2,7 @@ import PromptSync from "prompt-sync";
 const prompt = PromptSync({ sigint: true })
 import fs from 'fs'
 import { clear } from "console";
+import { createDiffieHellmanGroup } from "crypto";
 
 //#region 
 const musicanData = fs.readFileSync("./musicians.json")
@@ -144,6 +145,33 @@ export class Musician {
       console.log("Is not a valid option.")
     }
   }
+  static AddMusicianToBand() { //Inte testat än, avvaktar då jag måste lägga till en annan sak först.
+    let musicanToAdd;
+    let toBand;
+    let theRun = false;
+    let theRun2 = false;
+    while (theRun == false) {
+      console.log("Which member do you want to add to a band?")
+      this.WriteMusicianList();
+      musicanToAdd = parseInt(prompt())
+      if (musicanToAdd >= 0 && musicanToAdd < musiker.length) {
+        console.log("Which band do you want to add it to? ")
+        Band.WriteBandList
+        toBand = parseInt(prompt())
+        if (toBand >= 0 && toBand < bands.length) {
+          console.log("Hej")
+          theRun = true;
+        }
+        else {
+          console.log("That is not a valid pick: ")
+        }
+
+      } else {
+        console.log("That is not a valid pick: ")
+      }
+    }
+
+  }
 }
 
 //#region 
@@ -217,9 +245,6 @@ export class Band {
 
     bandInfo = prompt("Write some additional information you want to add: ");
 
-    console.log("Which member do you want to add to the band?")
-    Musician.WriteMusicianList();
-
     let theBandToAdd = {
       'Band_Name': bandName,
       'Foundation_Year': foundationYear,
@@ -231,6 +256,24 @@ export class Band {
     }
     bands.push(theBandToAdd)
 
+  }
+  static RemoveBand() {
+    clear()
+    console.log("Pick which which band you want to remove by picking its number")
+    this.WriteBandList()
+
+    let whichToRemove = parseInt(prompt());
+    if (whichToRemove >= 0 && whichToRemove < bands.length) {
+      bands.splice(whichToRemove, 1)
+      console.log("removing the band!")
+    }
+    else {
+      console.log("Is not a valid option.")
+    }
+
+    for (let i = 0; i < bands.length; i++) {
+      console.log(`${i}.`, bands[i].Band_Name);
+    }
   }
 
   static UpploadBandData() {
@@ -259,6 +302,8 @@ export class Band {
       console.log("Is not a valid option.")
     }
   }
+
+
 }
 
 

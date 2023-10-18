@@ -49,10 +49,11 @@ function Menu() {
 
     case "4":
       //En funktion för att ta bort ett band helt
-
+      Band.RemoveBand();
       break;
     case "5":
       //en funktion som visar upp alla musiker där de kan välja en musiker och ett band att lägga till musikern i
+      Musician.AddMusicianToBand();
       break;
     case "6":
       //en funktiomn som tar upp en alla musiker där man kan klicka på en musiker och ta bort de från ett band om de är med ett band (kanske kan ha en bool som tittar om de är i ett band eller inte)

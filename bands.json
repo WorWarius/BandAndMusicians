@@ -4,7 +4,16 @@
     "Foundation_Year": 2000,
     "Disbanded": "No",
     "Disbandment_Year": "Currently Active",
-    "Band_Info": "He is Cool",
+    "Band_Info": "Really Cool",
+    "Current_Members": [],
+    "Previous_Members": []
+  },
+  {
+    "Band_Name": "NoNut",
+    "Foundation_Year": 2000,
+    "Disbanded": "Yes",
+    "Disbandment_Year": 2003,
+    "Band_Info": "Coolest Band NOT!",
     "Current_Members": [],
     "Previous_Members": []
   }
