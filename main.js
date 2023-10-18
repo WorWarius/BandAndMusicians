@@ -57,6 +57,7 @@ function Menu() {
       break;
     case "6":
       //en funktiomn som tar upp en alla musiker där man kan klicka på en musiker och ta bort de från ett band om de är med ett band (kanske kan ha en bool som tittar om de är i ett band eller inte)
+      Musician.RemoveMusicianFromBand();
       break;
     case "7":
       Musician.MusicianInfo();

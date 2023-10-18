@@ -180,6 +180,44 @@ export class Musician {
     }
 
   }
+
+  static RemoveMusicianFromBand() {
+    let musicianToRemove;
+    let fromBand;
+    let theRun = false;
+    while (theRun == false) {
+      console.log("Which musicians do you want to remove from a band?")
+      this.WriteMusicianList();
+      musicianToRemove = parseInt(prompt())
+      if (musicianToRemove >= 0 && musicianToRemove < musiker.length) {
+        console.log("Which band do you want to remove it from? ")
+
+        for (let i = 0; i < musiker.currentBands.length; i++) {
+          console.log(`${i}.`, musiker.currentBands[i].Band_Name);
+        }
+
+
+        fromBand = parseInt(prompt())
+        if (fromBand >= 0 && fromBand < musiker.currentBands.length) {
+
+          /*
+          musiker[musicanToAdd].currentBands.push(bands[toBand].Band_Name)
+          bands[toBand].Current_Members.push(musiker[musicanToAdd].name)
+          */
+
+          console.log("The musician is now removed from the band!")
+          theRun = true;
+        }
+        else {
+          console.log("That is not a valid pick: ")
+        }
+
+      } else {
+        console.log("That is not a valid pick: ")
+      }
+    }
+  }
+
 }
 
 //#region 
