@@ -149,17 +149,17 @@ export class Musician {
     let musicanToAdd;
     let toBand;
     let theRun = false;
-    let theRun2 = false;
     while (theRun == false) {
       console.log("Which member do you want to add to a band?")
       this.WriteMusicianList();
       musicanToAdd = parseInt(prompt())
       if (musicanToAdd >= 0 && musicanToAdd < musiker.length) {
         console.log("Which band do you want to add it to? ")
-        Band.WriteBandList
+        Band.WriteBandList();
         toBand = parseInt(prompt())
         if (toBand >= 0 && toBand < bands.length) {
-          console.log("Hej")
+          musiker[musicanToAdd].currentBands.push(bands[toBand].Band_Name)
+          bands[toBand].Current_Members.push(musiker[musicanToAdd].name)
           theRun = true;
         }
         else {
