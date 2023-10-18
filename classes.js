@@ -120,7 +120,7 @@ export class Musician {
   static UpploadMusicianData() {
     fs.writeFile('./musicians.json', JSON.stringify(musiker, null, 2), (err) => {
       if (err) throw err;
-      console.log('Data written to file');
+      console.log('Musican Data written to file');
     });
   }
 
@@ -215,6 +215,8 @@ export class Band {
 
     bandInfo = prompt("Write some additional information you want to add: ");
 
+    console.log("Which member do you want to add to the band?")
+    WriteMusicianList();
 
     let theBandToAdd = {
       'Band Name': bandName,
@@ -228,6 +230,35 @@ export class Band {
     bands.push(theBandToAdd)
 
   }
+
+  static UpploadBandData() {
+    fs.writeFile('./bands.json', JSON.stringify(bands, null, 2), (err) => {
+      if (err) throw err;
+      console.log('Band Data written to file');
+    });
+  }
+
+  static WriteBandList() {
+    for (let i = 0; i < bands.length; i++) {
+      console.log(`${i}.`, bands[i].name);
+    }
+  }
+
+  static BandInfo() {
+    clear();
+    console.log("Which Band do you want information of? Please pick the Band by writing the number next to their name at the bottom: ")
+    this.WriteBandList();
+
+    let whichToGetInfoFrom = parseInt(prompt());
+    if (whichToGetInfoFrom >= 0 && whichToGetInfoFrom < musiker.length) {
+      console.log(musiker[whichToGetInfoFrom])
+
+    }
+    else {
+      console.log("Is not a valid option.")
+    }
+  }
+
 }
 
 

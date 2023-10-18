@@ -48,6 +48,7 @@ function Menu() {
       break;
     case "4":
       //En funktion för att ta bort ett band helt
+
       break;
     case "5":
       //en funktion som visar upp alla musiker där de kan välja en musiker och ett band att lägga till musikern i
@@ -59,11 +60,13 @@ function Menu() {
       Musician.MusicianInfo();
       break;
     case "8":
-      //En funktion som tar upp en lista på band  där använderen kan välja ett band och skriver då ut all info om det
+      //En funktion som tar upp en lista på band där använderen kan välja ett band och skriver då ut all info om det
+      Band.BandInfo();
       break;
     case "9":
       run = false;
       Musician.UpploadMusicianData();
+      Band.UpploadBandData();
       break;
     default:
       console.log("That is not a valid option")
@@ -73,35 +76,3 @@ function Menu() {
 
 }
 
-function AddBand() {
-  bandName = prompt("Write the name of the band: ");
-  foundationYear = prompt("Write the year the band was made: ");
-  console.log(`Is the band disbanded?
-      1. Yes
-      2. No
-      `)
-  isDisbanded = prompt()
-  if (isDisbanded == 1) {
-    isDisbanded = "Yes"
-    disbandment = prompt("Write the year the band disbanded: ");
-  } else if (isDisbanded == 2) {
-    isDisbanded = "No"
-    disbandment = "Currently Active"
-  } else {
-    console.log("You did not give a valid answer")
-  }
-  bandInfo = prompt("Write some additional information you want to add: ");
-
-  let theBand = {
-    'Band Name': bandName,
-    'Foundation Year': foundationYear,
-    'Disbanded': isDisbanded,
-    'Disbandment Info': disbandment,
-    'Band Info': bandInfo,
-    'Current Members': currentMembers,
-    'Previous Members': previousMembers
-  }
-
-  bands.push(theBand)
-  console.log(bands[0])
-}
