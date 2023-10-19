@@ -149,7 +149,7 @@ export class Musician {
       console.log("Is not a valid option.")
     }
   }
-
+  //se till att man inte kan lägga till en person flera gånger i samma band
   static AddMusicianToBand() {
     let musicanToAdd;
     let toBand;
@@ -163,10 +163,7 @@ export class Musician {
         Band.WriteBandList();
         toBand = parseInt(prompt())
         if (toBand >= 0 && toBand < bands.length) {
-
-          musiker[musicanToAdd].currentBands.push(bands[toBand].Band_Name)
-          bands[toBand].Current_Members.push(musiker[musicanToAdd].name)
-
+          this.AddingMusicianToABand(musicanToAdd, toBand);
           console.log("The musician is now added to the band!")
           theRun = true;
         }
@@ -180,7 +177,7 @@ export class Musician {
     }
 
   }
-
+  //Måste se till att musikern istället går över till previous bands
   static RemoveMusicianFromBand() {
     let musicianToRemove;
     let fromBand;
@@ -200,10 +197,7 @@ export class Musician {
 
           fromBand = parseInt(prompt())
           if (fromBand >= 0 && fromBand < bands[fromBand].Current_Members.length) {
-
-            musiker[musicianToRemove].currentBands.splice(bands[fromBand], 1) //skulle kunna göra någon typ av funktion för detta och att lägga till som man kallar på med två variabler istället
-            bands[fromBand].Current_Members.splice(musiker[musicianToRemove], 1)
-
+            this.MusicianFromBandRemoval(musicianToRemove, fromBand)
             console.log("The musician is now removed from the band!")
             theRun = true;
           }
@@ -218,6 +212,16 @@ export class Musician {
       }
 
     }
+  }
+
+  static MusicianFromBandRemoval(musicianToBeRemoved, fromWhichBand) {
+    musiker[musicianToBeRemoved].currentBands.splice(bands[fromWhichBand], 1)
+    bands[fromWhichBand].Current_Members.splice(musiker[musicianToBeRemoved], 1)
+  }
+
+  static AddingMusicianToABand(musicanToBeAdded, toWhichBand) {
+    musiker[musicanToBeAdded].currentBands.push(bands[toWhichBand].Band_Name)
+    bands[toWhichBand].Current_Members.push(musiker[musicanToBeAdded].name)
   }
 
 }
@@ -292,6 +296,7 @@ export class Band {
     }
 
     bandInfo = prompt("Write some additional information you want to add: ");
+
 
     let theBandToAdd = {
       'Band_Name': bandName,
