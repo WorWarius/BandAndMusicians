@@ -153,18 +153,21 @@ export class Musician {
         if (toBand >= 0 && toBand < bands.length) {
           let theSelectedMusician = musiker[musicanToAdd];
           let theSelectedBand = bands[toBand];
+          for (let i = 0; i < musiker.length; i++) {
+            if (theSelectedMusician.currentBands.includes(theSelectedBand)) //Detta fungerar inte just nu och istället så går den alltid över till else. Men det går att lägga till musiker i band, det är bara att det går att lägga till samma person som redan finns.
+            {
+              console.log("The musician is already part of the selected band.");
+            } else if (!theSelectedMusician.currentBands.includes(theSelectedBand)) {
+              this.AddingMusicianToABand(musicanToAdd, toBand);
+              console.log("The musician is now added to the band!");
+              theRun = true;
+            }
+            else {
+              console.log("That is not a valid option!")
+            }
 
-          if (theSelectedMusician.currentBands.includes(theSelectedBand) && !isNaN(theSelectedBand.currentBands)) //Detta fungerar inte just nu och istället så går den alltid över till else. Men det går att lägga till musiker i band, det är bara att det går att lägga till samma person som redan finns.
-          {
-            console.log("The musician is already part of the selected band.");
-          } else if (!theSelectedMusician.currentBands.includes(theSelectedBand) && !isNaN(theSelectedBand.currentBands)) {
-            this.AddingMusicianToABand(musicanToAdd, toBand);
-            console.log("The musician is now added to the band!");
-            theRun = true;
           }
-          else {
-            console.log("That is not a valid option!")
-          }
+
 
         }
         else {
