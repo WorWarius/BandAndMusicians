@@ -8,7 +8,10 @@
       "Singing",
       "Piano"
     ],
-    "currentBands": [],
+    "currentBands": [
+      "Sabaton",
+      "Lordi"
+    ],
     "previousBands": []
   },
   {
@@ -17,9 +20,12 @@
     "age": 24,
     "info": "Not as Cool as linus",
     "instruments": [
-      "Guitar"
+      "Singing"
     ],
-    "currentBands": [],
+    "currentBands": [
+      "Sabaton",
+      "Lordi"
+    ],
     "previousBands": []
   }
 ]

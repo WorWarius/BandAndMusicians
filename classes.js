@@ -153,22 +153,18 @@ export class Musician {
         if (toBand >= 0 && toBand < bands.length) {
           let theSelectedMusician = musiker[musicanToAdd];
           let theSelectedBand = bands[toBand];
-          for (let i = 0; i < musiker.length; i++) {
-            if (theSelectedMusician.currentBands.includes(theSelectedBand)) //Detta fungerar inte just nu och istället så går den alltid över till else. Men det går att lägga till musiker i band, det är bara att det går att lägga till samma person som redan finns.
-            {
-              console.log("The musician is already part of the selected band.");
-            } else if (!theSelectedMusician.currentBands.includes(theSelectedBand)) {
-              this.AddingMusicianToABand(musicanToAdd, toBand);
-              console.log("The musician is now added to the band!");
-              theRun = true;
-            }
-            else {
-              console.log("That is not a valid option!")
-            }
+          if (theSelectedMusician.currentBands.includes(theSelectedBand)) //Detta fungerar inte just nu och istället så går den alltid över till else. Men det går att lägga till musiker i band, det är bara att det går att lägga till samma person som redan finns.
+          {
+            console.log("The musician is already part of the selected band.");
 
+          } else if (!theSelectedMusician.currentBands.includes(theSelectedBand)) {
+            this.AddingMusicianToABand(musicanToAdd, toBand);
+            console.log("The musician is now added to the band!");
+            theRun = true;
           }
-
-
+          else {
+            console.log("That is not a valid option!")
+          }
         }
         else {
           console.log("That is not a valid pick: ")
@@ -179,26 +175,26 @@ export class Musician {
     }
 
   }
-  //Måste se till att musikern istället går över till previous bands
+
   static RemoveMusicianFromBand() {
     let musicianToRemove;
     let fromBand;
     let theRun = false;
+
     while (theRun == false) {
+
       console.log("Which musicians do you want to remove from a band?")
       this.WriteMusicianList();
+
       musicianToRemove = parseInt(prompt())
       if (musicianToRemove >= 0 && musicianToRemove < musiker.length) {
         if (musiker[musicianToRemove].currentBands.length > 0) {
           console.log("Which band do you want to remove it from? ")
-
           for (let i = 0; i < musiker[musicianToRemove].currentBands.length; i++) {
             console.log(`${i}.`, musiker[musicianToRemove].currentBands[i]);
           }
-
-
           fromBand = parseInt(prompt())
-          if (fromBand >= 0 && fromBand < bands[fromBand].Current_Members.length) {
+          if (fromBand >= 0 && fromBand <= bands[fromBand].Current_Members.length) {
             this.MovingMusicianToPreviousBands(musicianToRemove, fromBand)
             this.MusicianFromBandRemoval(musicianToRemove, fromBand)
             console.log("The musician is now removed from the band!")
@@ -216,7 +212,6 @@ export class Musician {
 
     }
   }
-
   static MusicianFromBandRemoval(musicianToBeRemoved, fromWhichBand) {
     musiker[musicianToBeRemoved].currentBands.splice(bands[fromWhichBand], 1)
     bands[fromWhichBand].Current_Members.splice(musiker[musicianToBeRemoved], 1)
@@ -226,13 +221,12 @@ export class Musician {
     musiker[musicanToBeAdded].currentBands.push(bands[toWhichBand].Band_Name)
     bands[toWhichBand].Current_Members.push(musiker[musicanToBeAdded].artist_name)
   }
+
   static MovingMusicianToPreviousBands(musicanToBeMoved, toWhichBand) {
     musiker[musicanToBeMoved].previousBands.push(bands[toWhichBand].Band_Name)
     bands[toWhichBand].Previous_Members.push(musiker[musicanToBeMoved].artist_name)
   }
-
 }
-
 //#region 
 const bandData = fs.readFileSync("./bands.json")
 const savedBands = JSON.parse(bandData);
@@ -247,7 +241,6 @@ let bandInfo;
 let currentMembers = []
 let previousMembers = []
 //#endregion
-
 export class Band {
   constructor() {
     this.bandName = theBandName;
