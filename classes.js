@@ -2,7 +2,6 @@ import PromptSync from "prompt-sync";
 const prompt = PromptSync({ sigint: true })
 import fs from 'fs'
 import { clear } from "console";
-import { createDiffieHellmanGroup } from "crypto";
 
 //#region 
 const musicanData = fs.readFileSync("./musicians.json")
@@ -91,7 +90,7 @@ export class Musician {
     musiker.push(musikern)
 
   }
-
+  //Se till att när man tar bort denna att den tar bort musikern från alla band och previous bands
   static RemoveMusician() {
     clear()
     console.log("Pick which musician to remove by picking its number")
@@ -175,7 +174,7 @@ export class Musician {
     }
 
   }
-
+  //Problemet är att den tar alltid bort den första i current bands. Detta måste jag hitta vart den gör detta. Detta kan antingen vara här eller något av de andra relaterade funktionerna
   static RemoveMusicianFromBand() {
     let musicianToRemove;
     let fromBand;
@@ -212,6 +211,7 @@ export class Musician {
 
     }
   }
+
   static MusicianFromBandRemoval(musicianToBeRemoved, fromWhichBand) {
     musiker[musicianToBeRemoved].currentBands.splice(bands[fromWhichBand], 1)
     bands[fromWhichBand].Current_Members.splice(musiker[musicianToBeRemoved], 1)
@@ -251,7 +251,7 @@ export class Band {
     this.membersInfo()
     this.previousMemberInfo()
   }
-
+  //se till att när man skapar ett band måste man lägga till en musiker direkt
   static CreateBand() {
     clear();
     let stopLoopCheck = false;
@@ -310,7 +310,7 @@ export class Band {
     bands.push(theBandToAdd)
 
   }
-
+  //Se till att när man tar bort denna att den tar bort alla band från alla musiker
   static RemoveBand() {
     clear()
     console.log("Pick which which band you want to remove by picking its number")

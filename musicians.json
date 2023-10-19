@@ -9,10 +9,12 @@
       "Piano"
     ],
     "currentBands": [
-      "Sabaton",
-      "Lordi"
+      "Lordi",
+      "Dumbo"
     ],
-    "previousBands": []
+    "previousBands": [
+      "Dumbo"
+    ]
   },
   {
     "artist_name": "Daniel",
@@ -24,7 +26,8 @@
     ],
     "currentBands": [
       "Sabaton",
-      "Lordi"
+      "Lordi",
+      "Dumbo"
     ],
     "previousBands": []
   }
