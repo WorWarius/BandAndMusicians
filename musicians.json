@@ -1,7 +1,7 @@
 [
   {
     "artist_name": "Linus Edlund",
-    "birthDay": 2000,
+    "birthYear": 2000,
     "age": 23,
     "info": "Cool",
     "instruments": [
@@ -15,22 +15,11 @@
   },
   {
     "artist_name": "Daniel",
-    "birthDay": 1999,
+    "birthYear": 1999,
     "age": 24,
     "info": "Not as Cool as linus",
     "instruments": [
       "Guitar"
-    ],
-    "currentBands": [],
-    "previousBands": []
-  },
-  {
-    "artist_name": "AnnaKiwi",
-    "birthDay": 2002,
-    "age": 21,
-    "info": "Cutest",
-    "instruments": [
-      "Flute"
     ],
     "currentBands": [],
     "previousBands": []

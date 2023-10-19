@@ -80,7 +80,7 @@ export class Musician {
 
     let musikern = {
       'artist_name': artistName,
-      'birthDay': birthYear,
+      'birthYear': birthYear,
       'age': theAge,
       'info': info,
       'instruments': instruments,
@@ -139,6 +139,7 @@ export class Musician {
     let musicanToAdd;
     let toBand;
     let theRun = false;
+
     while (theRun == false) {
       console.log("Which member do you want to add to a band?")
       this.WriteMusicianList();
@@ -147,15 +148,28 @@ export class Musician {
         console.log("Which band do you want to add it to? ")
         Band.WriteBandList();
         toBand = parseInt(prompt())
+
+
         if (toBand >= 0 && toBand < bands.length) {
-          this.AddingMusicianToABand(musicanToAdd, toBand);
-          console.log("The musician is now added to the band!")
-          theRun = true;
+          let theSelectedMusician = musiker[musicanToAdd];
+          let theSelectedBand = bands[toBand];
+
+          if (theSelectedMusician.currentBands.includes(theSelectedBand) && !isNaN(theSelectedBand.currentBands)) //Detta fungerar inte just nu och istället så går den alltid över till else. Men det går att lägga till musiker i band, det är bara att det går att lägga till samma person som redan finns.
+          {
+            console.log("The musician is already part of the selected band.");
+          } else if (!theSelectedMusician.currentBands.includes(theSelectedBand) && !isNaN(theSelectedBand.currentBands)) {
+            this.AddingMusicianToABand(musicanToAdd, toBand);
+            console.log("The musician is now added to the band!");
+            theRun = true;
+          }
+          else {
+            console.log("That is not a valid option!")
+          }
+
         }
         else {
           console.log("That is not a valid pick: ")
         }
-
       } else {
         console.log("That is not a valid pick: ")
       }
@@ -182,7 +196,7 @@ export class Musician {
 
           fromBand = parseInt(prompt())
           if (fromBand >= 0 && fromBand < bands[fromBand].Current_Members.length) {
-            this.musicanToBeMoved(musicianToRemove, fromBand)
+            this.MovingMusicianToPreviousBands(musicianToRemove, fromBand)
             this.MusicianFromBandRemoval(musicianToRemove, fromBand)
             console.log("The musician is now removed from the band!")
             theRun = true;
