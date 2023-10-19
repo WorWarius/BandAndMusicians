@@ -10,8 +10,7 @@ const savedMuscians = JSON.parse(musicanData);
 
 let musiker = savedMuscians
 
-let theName;
-let lastName;
+let artistName;
 let birthYear;
 let theAge;
 let info;
@@ -26,8 +25,7 @@ export class Musicians {
 
 export class Musician {
   constructor() {
-    this.theName = firstName;
-    this.theLastName = lastName
+    this.artistName = theArtistName;
     this.theBirthYear = birthYear;
     this.theAge = musiciansAge;
     this.information = info;
@@ -37,7 +35,7 @@ export class Musician {
   }
 
   /*
-  set firstName(newName) {
+  set theArtistName(newName) {
     if (newName.length > 1) {
       this._theName = newName;
     } else {
@@ -45,20 +43,12 @@ export class Musician {
 
     }
   }
-  set lastName(newLastName) {
-    if (newLastName.length > 1) {
-      this._theLastName = newLastName;
-    } else {
-      console.log("A new name need to have at least 1 letter")
-    }
-  }
   */
 
   static AddMuscician() {
     clear();
     let stopLoopCheck = false;
-    theName = prompt("Write your first name: ");
-    lastName = prompt("Write your last name: ");
+    artistName = prompt("Write your artist name: ");
     while (stopLoopCheck == false) {
       birthYear = parseInt(prompt("Write your birthyear (It should be written like this: yyyy): "));
       if (typeof birthYear === 'number' && !isNaN(birthYear)) {
@@ -89,8 +79,7 @@ export class Musician {
     theAge = currentYear - birthYear
 
     let musikern = {
-      'name': theName,
-      'lastName': lastName,
+      'artist_name': artistName,
       'birthDay': birthYear,
       'age': theAge,
       'info': info,
@@ -116,10 +105,6 @@ export class Musician {
     else {
       console.log("Is not a valid option.")
     }
-
-    for (let i = 0; i < musiker.length; i++) {
-      console.log(`${i}.`, musiker[i].name);
-    }
   }
 
   static UpploadMusicianData() {
@@ -131,7 +116,7 @@ export class Musician {
 
   static WriteMusicianList() {
     for (let i = 0; i < musiker.length; i++) {
-      console.log(`${i}.`, musiker[i].name, musiker[i].lastName);
+      console.log(`${i}.`, musiker[i].artist_name);
     }
   }
 
@@ -197,6 +182,7 @@ export class Musician {
 
           fromBand = parseInt(prompt())
           if (fromBand >= 0 && fromBand < bands[fromBand].Current_Members.length) {
+            this.musicanToBeMoved(musicianToRemove, fromBand)
             this.MusicianFromBandRemoval(musicianToRemove, fromBand)
             console.log("The musician is now removed from the band!")
             theRun = true;
@@ -221,7 +207,11 @@ export class Musician {
 
   static AddingMusicianToABand(musicanToBeAdded, toWhichBand) {
     musiker[musicanToBeAdded].currentBands.push(bands[toWhichBand].Band_Name)
-    bands[toWhichBand].Current_Members.push(musiker[musicanToBeAdded].name)
+    bands[toWhichBand].Current_Members.push(musiker[musicanToBeAdded].artist_name)
+  }
+  static MovingMusicianToPreviousBands(musicanToBeMoved, toWhichBand) {
+    musiker[musicanToBeMoved].previousBands.push(bands[toWhichBand].Band_Name)
+    bands[toWhichBand].Previous_Members.push(musiker[musicanToBeMoved].artist_name)
   }
 
 }
@@ -323,10 +313,6 @@ export class Band {
     }
     else {
       console.log("Is not a valid option.")
-    }
-
-    for (let i = 0; i < bands.length; i++) {
-      console.log(`${i}.`, bands[i].Band_Name);
     }
   }
 

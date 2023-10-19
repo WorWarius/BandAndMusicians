@@ -5,7 +5,9 @@
     "Disbanded": "No",
     "Disbandment_Year": "Currently Active",
     "Band_Info": "Metalband",
-    "Current_Members": [],
+    "Current_Members": [
+      "Linus Edlund"
+    ],
     "Previous_Members": []
   },
   {
