@@ -3,12 +3,18 @@ const prompt = PromptSync({ sigint: true })
 import fs from 'fs'
 import { clear } from "console";
 
+//Introduce ID to bands and musicians
+//When removing members and adding them it should be made with ID instead of name
+
+//This is optional for now. Try to see if you get it to work
+//Use constructor instead of direct push: https://pvt23-kyh.lms.nodehill.se/article/exempel-cirkulara-referenser-och-serialisering-deserialisering-till-json-med-bibehallna-klasser
+//not all methods should be constructors
+
 //#region 
 const musicanData = fs.readFileSync("./musicians.json")
 const savedMuscians = JSON.parse(musicanData);
 
 let musiker = savedMuscians
-
 let artistName;
 let birthYear;
 let theAge;
@@ -16,6 +22,7 @@ let info;
 let instruments = []
 let currentBands = []
 let previousBands = []
+let musikerID;
 //#endregion
 
 export class Musicians {
@@ -31,18 +38,8 @@ export class Musician {
     this.theCurrentBands = currentBands
     this.thePreviousBands = previousBands
     this.theInstruments = instruments
+    this.ID = IDs
   }
-
-  /*
-  set theArtistName(newName) {
-    if (newName.length > 1) {
-      this._theName = newName;
-    } else {
-      console.log("A new name need to have at least 1 letter")
-
-    }
-  }
-  */
 
   static AddMuscician() {
     clear();
@@ -84,7 +81,8 @@ export class Musician {
       'info': info,
       'instruments': instruments,
       'currentBands': currentBands,
-      'previousBands': previousBands
+      'previousBands': previousBands,
+      'ID': IDnumberMusician
     }
     instruments = [];
     musiker.push(musikern)
@@ -186,7 +184,7 @@ export class Musician {
       console.log("Which musicians do you want to remove from a band?")
       this.WriteMusicianList();
 
-      musicianToRemove = parseInt(prompt())
+      let musicianToRemove = parseInt(prompt())
       if (musicianToRemove >= 0 && musicianToRemove < musiker.length) {
         if (musiker[musicianToRemove].currentBands.length > 0) {
           console.log("Which band do you want to remove it from? ")
@@ -194,9 +192,38 @@ export class Musician {
             console.log(`${i}.`, musiker[musicianToRemove].currentBands[i]);
           }
           fromBand = parseInt(prompt())
-          if (fromBand >= 0 && fromBand <= bands.length && fromBand <= bands[fromBand].Current_Members.length) {
+          if (fromBand >= 0 && fromBand <= bands.length /*&& fromBand <= bands[fromBand].Current_Members.length*/) {
+
+            //console.log(musicianToRemove)
+            //console.log(fromBand)
+
+            const TheTestOne = musiker[musicianToRemove] //Jag får ut banden. Med prompten innan kan jag 
+            const TheTestTwo = musiker[musicianToRemove].currentBands
+            const TheTestThree = musiker[musicianToRemove].currentBands[fromBand] //This works
+            let TheTestFour
+            for (let index = 0; index < bands.length; index++) {
+
+              TheTestFour = bands[index].Current_Members.includes(TheTestTwo)
+              if (TheTestFour == true)
+                console.log("Hej")
+            }
 
 
+            console.log("-----------------------------------------------")
+            console.log(TheTestOne)
+            console.log("-----------------------------------------------")
+            console.log(TheTestTwo)
+            console.log("-----------------------------------------------")
+            console.log(TheTestThree)
+            console.log("-----------------------------------------------")
+            console.log(TheTestFour)
+            console.log("-----------------------------------------------")
+
+            //musiker[musicianToRemove].currentBands[fromBand].splice()
+
+
+            //console.log(TheTestOne[fromBand].splice(bands[fromBand], 1))
+            //console.log(bands[fromBand].Current_Members.splice(musiker[musicianToRemove], 1))
 
             /*
             console.log(musicianToRemove)
@@ -259,6 +286,7 @@ let disbandmentYear;
 let bandInfo;
 let currentMembers = []
 let previousMembers = []
+let bandID;
 //#endregion
 export class Band {
   constructor() {
@@ -324,7 +352,8 @@ export class Band {
       'Disbandment_Year': disbandmentYear,
       'Band_Info': bandInfo,
       'Current_Members': currentMembers,
-      'Previous_Members': previousMembers
+      'Previous_Members': previousMembers,
+      'BandID': bandIDnumber
     }
 
 
@@ -349,6 +378,7 @@ export class Band {
   }
 
   static UpploadBandData() {
+
     fs.writeFile('./bands.json', JSON.stringify(bands, null, 2), (err) => {
       if (err) throw err;
       console.log('Band Data written to file');
