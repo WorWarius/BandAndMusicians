@@ -8,7 +8,13 @@
       "Singing",
       "Piano"
     ],
-    "currentBands": [],
+    "currentBands": [
+      "Sabaton",
+      "Lordi",
+      "Gangsta",
+      "BOM",
+      "Dumbo"
+    ],
     "previousBands": []
   },
   {
@@ -19,7 +25,11 @@
     "instruments": [
       "Singing"
     ],
-    "currentBands": [],
+    "currentBands": [
+      "Sabaton",
+      "Gangsta",
+      "Dumbo"
+    ],
     "previousBands": []
   },
   {
@@ -31,9 +41,22 @@
       "Singing"
     ],
     "currentBands": [
-      "BOM",
-      "Gangsta"
+      "Lordi",
+      "BOM"
     ],
+    "previousBands": []
+  },
+  {
+    "artist_name": "Daniel Craig",
+    "birthYear": 1967,
+    "age": 56,
+    "info": "The Ultimate Spy",
+    "instruments": [
+      "Piano",
+      "Flute",
+      "Organ"
+    ],
+    "currentBands": [],
     "previousBands": []
   }
 ]

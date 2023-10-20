@@ -19,7 +19,7 @@
     "Band_Info": "Finish Metal",
     "Current_Members": [
       "Linus Edlund",
-      "Daniel"
+      "Ado"
     ],
     "Previous_Members": []
   },
@@ -30,11 +30,10 @@
     "Disbandment_Year": "Currently Active",
     "Band_Info": "Maybe It is",
     "Current_Members": [
+      "Linus Edlund",
       "Daniel"
     ],
-    "Previous_Members": [
-      "Linus Edlund"
-    ]
+    "Previous_Members": []
   },
   {
     "Band_Name": "BOM",
@@ -43,6 +42,7 @@
     "Disbandment_Year": "Currently Active",
     "Band_Info": "Nordic metal",
     "Current_Members": [
+      "Linus Edlund",
       "Ado"
     ],
     "Previous_Members": []
@@ -54,7 +54,8 @@
     "Disbandment_Year": "Currently Active",
     "Band_Info": "Rapgods",
     "Current_Members": [
-      "Ado"
+      "Linus Edlund",
+      "Daniel"
     ],
     "Previous_Members": []
   }

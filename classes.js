@@ -213,7 +213,8 @@ export class Musician {
     }
   }
 
-  static MusicianFromBandRemoval(musicianToBeRemoved, fromWhichBand) {
+  static MusicianFromBandRemoval(musicianToBeRemoved, fromWhichBand) //Min spekulation är att buggen kring att den alltid tar bort den första i currentBands är här
+  {
     musiker[musicianToBeRemoved].currentBands.splice(bands[fromWhichBand], 1)
     bands[fromWhichBand].Current_Members.splice(musiker[musicianToBeRemoved], 1)
   }
