@@ -8,13 +8,8 @@
       "Singing",
       "Piano"
     ],
-    "currentBands": [
-      "Lordi",
-      "Dumbo"
-    ],
-    "previousBands": [
-      "Dumbo"
-    ]
+    "currentBands": [],
+    "previousBands": []
   },
   {
     "artist_name": "Daniel",
@@ -24,10 +19,20 @@
     "instruments": [
       "Singing"
     ],
+    "currentBands": [],
+    "previousBands": []
+  },
+  {
+    "artist_name": "Ado",
+    "birthYear": 1989,
+    "age": 34,
+    "info": "He is the Best",
+    "instruments": [
+      "Singing"
+    ],
     "currentBands": [
-      "Sabaton",
-      "Lordi",
-      "Dumbo"
+      "BOM",
+      "Gangsta"
     ],
     "previousBands": []
   }

@@ -35,5 +35,27 @@
     "Previous_Members": [
       "Linus Edlund"
     ]
+  },
+  {
+    "Band_Name": "BOM",
+    "Foundation_Year": 1999,
+    "Disbanded": "No",
+    "Disbandment_Year": "Currently Active",
+    "Band_Info": "Nordic metal",
+    "Current_Members": [
+      "Ado"
+    ],
+    "Previous_Members": []
+  },
+  {
+    "Band_Name": "Gangsta",
+    "Foundation_Year": 2000,
+    "Disbanded": "No",
+    "Disbandment_Year": "Currently Active",
+    "Band_Info": "Rapgods",
+    "Current_Members": [
+      "Ado"
+    ],
+    "Previous_Members": []
   }
 ]

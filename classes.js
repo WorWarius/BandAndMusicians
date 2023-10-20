@@ -175,6 +175,7 @@ export class Musician {
 
   }
   //Problemet är att den tar alltid bort den första i current bands. Detta måste jag hitta vart den gör detta. Detta kan antingen vara här eller något av de andra relaterade funktionerna
+  //Ha en check som tittar om bandet är tomt och ifall den är tom ska den sätta bandet disbanded till sann med detta år som är nu som när den är disbanded
   static RemoveMusicianFromBand() {
     let musicianToRemove;
     let fromBand;
@@ -251,7 +252,6 @@ export class Band {
     this.membersInfo()
     this.previousMemberInfo()
   }
-  //se till att när man skapar ett band måste man lägga till en musiker direkt
   static CreateBand() {
     clear();
     let stopLoopCheck = false;
@@ -298,6 +298,7 @@ export class Band {
     bandInfo = prompt("Write some additional information you want to add: ");
 
 
+
     let theBandToAdd = {
       'Band_Name': bandName,
       'Foundation_Year': foundationYear,
@@ -307,7 +308,10 @@ export class Band {
       'Current_Members': currentMembers,
       'Previous_Members': previousMembers
     }
+
+
     bands.push(theBandToAdd)
+    Musician.AddMusicianToBand();
 
   }
   //Se till att när man tar bort denna att den tar bort alla band från alla musiker
