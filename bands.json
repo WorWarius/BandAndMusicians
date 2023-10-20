@@ -19,7 +19,8 @@
     "Band_Info": "Finish Metal",
     "Current_Members": [
       "Linus Edlund",
-      "Ado"
+      "Ado",
+      "Daniel Craig"
     ],
     "Previous_Members": []
   },
@@ -30,10 +31,11 @@
     "Disbandment_Year": "Currently Active",
     "Band_Info": "Maybe It is",
     "Current_Members": [
-      "Linus Edlund",
       "Daniel"
     ],
-    "Previous_Members": []
+    "Previous_Members": [
+      "Daniel"
+    ]
   },
   {
     "Band_Name": "BOM",
@@ -55,7 +57,8 @@
     "Band_Info": "Rapgods",
     "Current_Members": [
       "Linus Edlund",
-      "Daniel"
+      "Daniel",
+      "Ado"
     ],
     "Previous_Members": []
   }

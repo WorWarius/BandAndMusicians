@@ -26,11 +26,12 @@
       "Singing"
     ],
     "currentBands": [
-      "Sabaton",
       "Gangsta",
       "Dumbo"
     ],
-    "previousBands": []
+    "previousBands": [
+      "Dumbo"
+    ]
   },
   {
     "artist_name": "Ado",
@@ -42,7 +43,8 @@
     ],
     "currentBands": [
       "Lordi",
-      "BOM"
+      "BOM",
+      "Gangsta"
     ],
     "previousBands": []
   },
@@ -56,7 +58,9 @@
       "Flute",
       "Organ"
     ],
-    "currentBands": [],
+    "currentBands": [
+      "Lordi"
+    ],
     "previousBands": []
   }
 ]

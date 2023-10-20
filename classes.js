@@ -194,9 +194,17 @@ export class Musician {
             console.log(`${i}.`, musiker[musicianToRemove].currentBands[i]);
           }
           fromBand = parseInt(prompt())
-          if (fromBand >= 0 && fromBand <= bands[fromBand].Current_Members.length) {
+          if (fromBand >= 0 && fromBand <= bands.length && fromBand <= bands[fromBand].Current_Members.length) {
+
+
+
+            /*
+            console.log(musicianToRemove)
+            console.log(fromBand)
             this.MovingMusicianToPreviousBands(musicianToRemove, fromBand)
             this.MusicianFromBandRemoval(musicianToRemove, fromBand)
+            */
+
             console.log("The musician is now removed from the band!")
             theRun = true;
           }
@@ -215,8 +223,15 @@ export class Musician {
 
   static MusicianFromBandRemoval(musicianToBeRemoved, fromWhichBand) //Min spekulation är att buggen kring att den alltid tar bort den första i currentBands är här
   {
-    musiker[musicianToBeRemoved].currentBands.splice(bands[fromWhichBand], 1)
-    bands[fromWhichBand].Current_Members.splice(musiker[musicianToBeRemoved], 1)
+    //Okej, så felet är att oavsett vad man väljer blir det alltid den som är 0 i currentBands som väljs och det band man väljer där
+    //Så om jag väljer ADO (2 i arrayen) och Lordi(Plats 1 i dess olika band) så blir det Linus Edlund (Är 0 i musiker arrayn)
+    console.log(musicianToBeRemoved)
+    console.log(fromWhichBand)
+    console.log(musiker[musicianToBeRemoved].currentBands.splice(bands[fromWhichBand], 1))
+    console.log(bands[fromWhichBand].Current_Members.splice(musiker[musicianToBeRemoved], 1))
+    //musiker[musicianToBeRemoved].currentBands.splice(bands[fromWhichBand], 1)
+    //bands[fromWhichBand].Current_Members.splice(musiker[musicianToBeRemoved], 1)
+
   }
 
   static AddingMusicianToABand(musicanToBeAdded, toWhichBand) {
@@ -225,8 +240,10 @@ export class Musician {
   }
 
   static MovingMusicianToPreviousBands(musicanToBeMoved, toWhichBand) {
-    musiker[musicanToBeMoved].previousBands.push(bands[toWhichBand].Band_Name)
-    bands[toWhichBand].Previous_Members.push(musiker[musicanToBeMoved].artist_name)
+    console.log(musiker[musicanToBeMoved].previousBands.push(bands[toWhichBand].Band_Name)) //Blir alltid 1
+    console.log(bands[toWhichBand].Previous_Members.push(musiker[musicanToBeMoved].artist_name)) //Blir alltid 1
+    //musiker[musicanToBeMoved].previousBands.push(bands[toWhichBand].Band_Name)
+    //bands[toWhichBand].Previous_Members.push(musiker[musicanToBeMoved].artist_name)
   }
 }
 //#region 
