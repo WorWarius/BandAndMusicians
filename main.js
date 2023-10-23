@@ -11,6 +11,7 @@ while (run == true) {
 }
 
 function Menu() {
+  const musican = new Musician();
   console.log("1. Lägg till musiker")
   console.log("2. Lägg till band")
   console.log("3. Ta bort musiker")

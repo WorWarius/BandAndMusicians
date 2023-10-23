@@ -41,7 +41,7 @@ export class Musician {
     this.ID = IDs
   }
 
-  static AddMuscician() {
+  AddMuscician() {
     clear();
     let stopLoopCheck = false;
     artistName = prompt("Write your artist name: ");
@@ -74,6 +74,11 @@ export class Musician {
     let currentYear = new Date().getFullYear();
     theAge = currentYear - birthYear
 
+    const minIDnum = 1
+    const maxIDnum = 100000000
+    musikerID = Math.floor(Math.random() * (maxIDnum - minIDnum + 1)) + minIDnum;
+    console.log(musikerID)
+
     let musikern = {
       'artist_name': artistName,
       'birthYear': birthYear,
@@ -82,10 +87,11 @@ export class Musician {
       'instruments': instruments,
       'currentBands': currentBands,
       'previousBands': previousBands,
-      'ID': IDnumberMusician
+      'ID': musikerID
     }
     instruments = [];
     musiker.push(musikern)
+
 
   }
   //Se till att när man tar bort denna att den tar bort musikern från alla band och previous bands
@@ -150,11 +156,11 @@ export class Musician {
         if (toBand >= 0 && toBand < bands.length) {
           let theSelectedMusician = musiker[musicanToAdd];
           let theSelectedBand = bands[toBand];
-          if (theSelectedMusician.currentBands.includes(theSelectedBand)) //Detta fungerar inte just nu och istället så går den alltid över till else. Men det går att lägga till musiker i band, det är bara att det går att lägga till samma person som redan finns.
+          if (theSelectedMusician.currentBands.includes(theSelectedBand.bandIDnumber)) //Detta fungerar inte just nu och istället så går den alltid över till else. Men det går att lägga till musiker i band, det är bara att det går att lägga till samma person som redan finns.
           {
             console.log("The musician is already part of the selected band.");
 
-          } else if (!theSelectedMusician.currentBands.includes(theSelectedBand)) {
+          } else if (!theSelectedMusician.currentBands.includes(theSelectedBand.bandIDnumber)) {
             this.AddingMusicianToABand(musicanToAdd, toBand);
             console.log("The musician is now added to the band!");
             theRun = true;
@@ -197,6 +203,11 @@ export class Musician {
             //console.log(musicianToRemove)
             //console.log(fromBand)
 
+
+
+
+
+            /*
             const TheTestOne = musiker[musicianToRemove] //Jag får ut banden. Med prompten innan kan jag 
             const TheTestTwo = musiker[musicianToRemove].currentBands
             const TheTestThree = musiker[musicianToRemove].currentBands[fromBand] //This works
@@ -225,7 +236,7 @@ export class Musician {
             //console.log(TheTestOne[fromBand].splice(bands[fromBand], 1))
             //console.log(bands[fromBand].Current_Members.splice(musiker[musicianToRemove], 1))
 
-            /*
+            
             console.log(musicianToRemove)
             console.log(fromBand)
             this.MovingMusicianToPreviousBands(musicianToRemove, fromBand)
@@ -262,16 +273,17 @@ export class Musician {
   }
 
   static AddingMusicianToABand(musicanToBeAdded, toWhichBand) {
-    musiker[musicanToBeAdded].currentBands.push(bands[toWhichBand].Band_Name)
-    bands[toWhichBand].Current_Members.push(musiker[musicanToBeAdded].artist_name)
+    musiker[musicanToBeAdded].currentBands.push(bands[toWhichBand].BandID)
+    bands[toWhichBand].Current_Members.push(musiker[musicanToBeAdded].ID)
   }
 
   static MovingMusicianToPreviousBands(musicanToBeMoved, toWhichBand) {
-    console.log(musiker[musicanToBeMoved].previousBands.push(bands[toWhichBand].Band_Name)) //Blir alltid 1
-    console.log(bands[toWhichBand].Previous_Members.push(musiker[musicanToBeMoved].artist_name)) //Blir alltid 1
+    console.log(musiker[musicanToBeMoved].previousBands.push(bands[toWhichBand].BandID)) //Blir alltid 1
+    console.log(bands[toWhichBand].Previous_Members.push(musiker[musicanToBeMoved].ID)) //Blir alltid 1
     //musiker[musicanToBeMoved].previousBands.push(bands[toWhichBand].Band_Name)
     //bands[toWhichBand].Previous_Members.push(musiker[musicanToBeMoved].artist_name)
   }
+
 }
 //#region 
 const bandData = fs.readFileSync("./bands.json")
@@ -342,7 +354,9 @@ export class Band {
     }
 
     bandInfo = prompt("Write some additional information you want to add: ");
-
+    const minIDnum = 1
+    const maxIDnum = 100000000
+    bandID = Math.floor(Math.random() * (maxIDnum - minIDnum + 1)) + minIDnum;
 
 
     let theBandToAdd = {
@@ -353,7 +367,7 @@ export class Band {
       'Band_Info': bandInfo,
       'Current_Members': currentMembers,
       'Previous_Members': previousMembers,
-      'BandID': bandIDnumber
+      'BandID': bandID
     }
 
 
