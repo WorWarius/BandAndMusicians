@@ -37,5 +37,20 @@
     "currentBands": [],
     "previousBands": [],
     "ID": 51520
+  },
+  {
+    "artist_name": "Dunking",
+    "birthYear": 1899,
+    "age": 124,
+    "info": "Old",
+    "instruments": [
+      "Dumb",
+      "La"
+    ],
+    "currentBands": [
+      42856854
+    ],
+    "previousBands": [],
+    "ID": 18879930
   }
 ]

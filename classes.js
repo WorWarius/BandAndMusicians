@@ -41,7 +41,7 @@ export class Musician {
     this.ID = IDs
   }
 
-  AddMuscician() {
+  static AddMuscician() {
     clear();
     let stopLoopCheck = false;
     artistName = prompt("Write your artist name: ");
@@ -190,7 +190,7 @@ export class Musician {
       console.log("Which musicians do you want to remove from a band?")
       this.WriteMusicianList();
 
-      let musicianToRemove = parseInt(prompt())
+      musicianToRemove = parseInt(prompt())
       if (musicianToRemove >= 0 && musicianToRemove < musiker.length) {
         if (musiker[musicianToRemove].currentBands.length > 0) {
           console.log("Which band do you want to remove it from? ")
@@ -200,8 +200,8 @@ export class Musician {
           fromBand = parseInt(prompt())
           if (fromBand >= 0 && fromBand <= bands.length /*&& fromBand <= bands[fromBand].Current_Members.length*/) {
 
-            //console.log(musicianToRemove)
-            //console.log(fromBand)
+            console.log(musicianToRemove)
+            console.log(fromBand)
 
 
 
